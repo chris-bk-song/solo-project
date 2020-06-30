@@ -1,0 +1,21 @@
+.Background {
+  background-color: #282c34;
+  height: 1024px;
+}
+
+.Header {
+  color: white;
+}
+.Card {
+  margin-top: 20px;
+  width: 200px;
+  border: 1px solid black;
+  background-color: beige;
+}
+
+.Col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid white;
+}

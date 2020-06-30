@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button } from 'react-bootstrap'
 
 export default class LoginPage extends Component {
   constructor(props) {
@@ -16,7 +18,7 @@ export default class LoginPage extends Component {
         <label htmlFor="loginpage"></label>
         <input type="text" id="username" name="username" placeholder="username" />
         <input type="password" id="password" name="password" placeholder="password" />
-        <button type="submit">LogIn</button>
+        <Button type="submit">LogIn</Button>
 
       </form>
     )
