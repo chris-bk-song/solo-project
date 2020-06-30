@@ -15,7 +15,14 @@ export default class Recipe extends Component {
 
     this.state = {
       recipeName: '',
+      recipes: [],
     }
+  }
+  
+  handleChange = (e) => {
+    this.setState({
+      recipeName: e.target.value
+    })
   }
 
   handleFormSubmit = (e) => {
@@ -26,23 +33,19 @@ export default class Recipe extends Component {
     .then(data => {
       if (data.Recipe) {
         this.setState({
-          recipeName: data.Recipe
+          recipes: data.Recipe
         })
       }
     })
   }
 
-  handleChange = (e) => {
-    this.setState({
-      recipeName: e.target.value
-    })
-  }
 
   render() {
     return (
       <div className={styles.Background}>
         <header>
-          <h1>Search for Recipe</h1>
+          <h1>Salt and Pepper</h1>
+          <a href="/login"><Button>Login</Button></a>
           <form onSubmit={ this.handleFormSubmit } >
             <input type="text" id="recipe" value={ this.state.recipeName } onChange={ this.handleChange} placeholder="Search for recipes">
             </input>
@@ -50,7 +53,7 @@ export default class Recipe extends Component {
           </form>
         </header>
         <Container className={styles.RecipeBox}>
-          { this.state.recipeName.localeCompare((recipe, index) => {
+          { this.state.recipes.map((recipe, index) => {
             return (
               <RecipeDetail recipe={ recipe } index={ index } /> 
             )
