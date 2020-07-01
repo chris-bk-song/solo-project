@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import LoginPage from './components/LoginPage';
+
 import Recipe from './components/Recipe';
+import LoginPage from './components/LoginPage';
 
 function App() {
   return (

@@ -1,5 +1,10 @@
 .Background {
   background-color: #282c34;
-  height: 1024px;
-  Color: white;
+  height: 100%;
+  Color: black;
+}
+
+.NavBar {
+  background-color: #282c34;
+  color: white;
 }

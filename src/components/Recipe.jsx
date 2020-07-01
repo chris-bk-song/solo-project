@@ -4,7 +4,7 @@ import RecipeDetail from './RecipeDetail';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, Nav } from 'react-bootstrap';
 
 import styles from './Recipe.module.css';
 
@@ -20,6 +20,7 @@ export default class Recipe extends Component {
   }
   
   handleChange = (e) => {
+    console.log ()
     this.setState({
       recipeName: e.target.value
     })
@@ -29,11 +30,12 @@ export default class Recipe extends Component {
     e.preventDefault();
     let recipe = this.state.recipeName
     fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=644cf81819bd45b8a428df385604dc1c&query=${recipe}`)
+    // fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=644cf81819bd45b8a428df385604dc1c&includeNutrition=true`)
     .then(res => res.json())
     .then(data => {
-      if (data.Recipe) {
+      if (data.results) {
         this.setState({
-          recipes: data.Recipe
+          recipes: data.results
         })
       }
     })
@@ -43,14 +45,17 @@ export default class Recipe extends Component {
   render() {
     return (
       <div className={styles.Background}>
-        <header>
+        <Nav className={styles.NavBar}>
           <h1>Salt and Pepper</h1>
-          <a href="/login"><Button>Login</Button></a>
           <form onSubmit={ this.handleFormSubmit } >
             <input type="text" id="recipe" value={ this.state.recipeName } onChange={ this.handleChange} placeholder="Search for recipes">
             </input>
             <Button type="submit">Search</Button>
           </form>
+          <a href="/login"><Button>Login</Button></a>
+          <a href="/signup"><Button>SignUp</Button></a>
+        </Nav>
+        <header>
         </header>
         <Container className={styles.RecipeBox}>
           { this.state.recipes.map((recipe, index) => {
