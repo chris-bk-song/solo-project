@@ -1,5 +1,5 @@
 .Background {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   height: 100%;
   Color: black;
 }
@@ -7,4 +7,11 @@
 .NavBar {
   background-color: #282c34;
   color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.NavBarNew {
+  display: flex;
+  justify-content: space-between;
+  background-color: peru;
 }

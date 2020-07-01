@@ -1,5 +1,12 @@
-.Background {
-  background-color: #282c34;
-  height: 1024px;
-  Color: black;
+.Container {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+  justify-content: space-around;
+  margin: 0px;
+  padding: 10px;
+}
+
+.Card {
+  width: 100%;
 }
