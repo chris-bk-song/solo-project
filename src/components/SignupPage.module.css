@@ -1,4 +1,6 @@
-.LoginForm {
+.SignupForm {
   display: flex;
   flex-direction: column;
+  width: 150px;
+  
 }
