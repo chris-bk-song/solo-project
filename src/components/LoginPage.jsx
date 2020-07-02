@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button } from 'react-bootstrap'
+import { Button, Navbar, Form } from 'react-bootstrap'
 import styles from './LoginPage.module.css'
+import { auth } from '../firebase'
 
 export default class LoginPage extends Component {
   constructor() {
     super();
     
     this.state = {
-      username: '',
+      email: '',
       password: '',
       error: '',
     }
@@ -18,19 +19,21 @@ export default class LoginPage extends Component {
   
   handleFormSubmit = (e) => {
     e.preventDefault();
-    if (!this.state.username) {
-      return this.setState({ error: 'Username is required' })
+    if (!this.state.email) {
+      return this.setState({ error: 'Email is required' })
     }
     if (!this.state.password) {
       return this.setState({ error: 'Password is required' })
     }
-    console.log(this.state.username)
-    console.log(this.state.password)
+    auth.signInWithEmailAndPassword(this.state.email, this.state.password)
+    .then(user => {
+      console.log(user)
+    })
   }
   
-  handleUsernameChange = (e) => {
+  handleEmailChange = (e) => {
     this.setState({
-      username: e.target.value,
+      email: e.target.value,
     })
   }
 
@@ -43,15 +46,22 @@ export default class LoginPage extends Component {
   render() {
     return (
       <div className={styles.Login}>
-        <form onSubmit={ this.handleFormSubmit } autocomplete="off">
-          <label>Username</label>
-          <input type="text" id="username" name="username" value={this.state.username} onChange={this.handleUsernameChange} placeholder="username" />
+        <Navbar className={styles.NavBarNew} bg="light" expand="lg">
+          <Navbar.Brand className={styles.NavLeft} href="/"><b>Salt & Pepper</b></Navbar.Brand>
+          <div className={styles.NavRight}>
+            <a href="/"><Button variant="light" className="btn-sm">Home</Button></a>
+            <a href="/signup"><Button variant="light" className="btn-sm">Sign up</Button></a>
+          </div>
+        </Navbar>
+        <Form className="LoginForm" onSubmit={ this.handleFormSubmit } autoComplete="off">
+          <label>Email</label>
+          <input type="text" id="email" name="email" value={this.state.email} onChange={this.handleEmailChange} placeholder="email" />
           
           <label>Password</label>
           <input type="password" id="password" name="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="password" />
           
           <Button type="submit">Log In</Button>
-        </form>
+        </Form>
       </div>
     )
   }

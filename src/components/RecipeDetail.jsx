@@ -7,7 +7,7 @@ import styles from './RecipeDetail.module.css'
 class RecipeDetail extends Component {
   state = {data: null}
   componentDidMount(){
-    fetch(`https://api.spoonacular.com/recipes/${this.props.recipe.id}/information?apiKey=9a56e86fa19142d4b20afc0d6b7b335c&includeNutrition=true`)
+    fetch(`https://api.spoonacular.com/recipes/${this.props.recipe.id}/information?apiKey=644cf81819bd45b8a428df385604dc1c&includeNutrition=true`)
     .then(res => res.json())
     .then(data => {
       this.setState({
@@ -37,10 +37,3 @@ class RecipeDetail extends Component {
 }
 
 export default RecipeDetail
-
-
-
-// apikeys
-// 644cf81819bd45b8a428df385604dc1c
-// 67c41709350d4b19bd7705edd26e778a
-// 9a56e86fa19142d4b20afc0d6b7b335c
