@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Modal } from 'react-bootstrap'
 import styles from './RecipeDetail.module.css'
 // import Modal from '@bit/react-bootstrap.react-bootstrap.modal'
 
@@ -25,7 +25,7 @@ class RecipeDetail extends Component {
           <h5><b>{this.props.recipe.title}</b></h5>
           {/* <h5>{this.props.recipe.id}</h5> */}
           { this.state.data && (
-            <span class="text" dangerouslySetInnerHTML={ {__html:this.state.data.summary} }></span> 
+            <span class="text" className="overflow-hidden" style={{ maxWidth: "100px" }} dangerouslySetInnerHTML={ {__html:this.state.data.summary} }></span> 
           )}
         </div>
         <br></br>
