@@ -24,7 +24,7 @@ export default class Recipe extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     let recipe = this.state.recipeName
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=9a56e86fa19142d4b20afc0d6b7b335c&query=${recipe}`)
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=cdbc56563e5e4b63822789c78ea57883&query=${recipe}`)
     .then(res => res.json())
     .then(data => {
       if (data.results) {
@@ -50,8 +50,8 @@ export default class Recipe extends Component {
           </div>
         </Navbar>
 
-        <img className={styles.Image} src="./images/cookingboard-crop.jpg" alt="cooking board" />
-
+        <img className={styles.Image} src="./images/cookingboard-cropped.jpg" alt="cooking board" />
+        <hr />
         <Container className={styles.RecipeBox}>
           { this.state.recipes.map((recipe, index) => {
             return (

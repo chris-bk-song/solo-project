@@ -10,7 +10,7 @@ import { saveRecipe } from './redux/actions/action'
 class RecipeDetailLoggedin extends Component {
   state = {data: null}
   componentDidMount(){
-    fetch(`https://api.spoonacular.com/recipes/${this.props.recipe.id}/information?apiKey=9a56e86fa19142d4b20afc0d6b7b335c&includeNutrition=true`)
+    fetch(`https://api.spoonacular.com/recipes/${this.props.recipe.id}/information?apiKey=cdbc56563e5e4b63822789c78ea57883&includeNutrition=true`)
     .then(res => res.json())
     .then(data => {
       this.setState({

@@ -9,9 +9,10 @@ function recipeReducer(state = initialState, action) {
     case SAVERECIPE:
       return {
         recipes: [...state.recipes, action.content]
-      }
+      };
+    default:
+      return state;
   }
-  return state;
 }
 
 export default recipeReducer;

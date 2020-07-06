@@ -35,8 +35,14 @@ export default class LoginPage extends Component {
     auth.signInWithEmailAndPassword(this.state.email, this.state.password)
     .then(user => {
       console.log(user)
-    })
-    this.props.history.push('/loggedin')
+      this.props.history.push('/loggedin')
+    }).catch(
+      err => {
+        this.setState({ 
+          error: err.message
+        })
+      }
+    )
   }
   
   handleEmailChange = (e) => {
@@ -77,6 +83,9 @@ export default class LoginPage extends Component {
             <Button type="submit" className={styles.LoginButton} variant="dark">Log In</Button>
             <p className={styles.LoginLink}>Not a member? <a href="/signup">create account</a></p>
           </Form>
+          { this.state.error && 
+            <p>{ this.state.error }</p>
+          }
         </div>
       </div>
     )
