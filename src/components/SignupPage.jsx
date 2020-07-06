@@ -72,28 +72,42 @@ export default class SignupPage extends Component {
           <Navbar.Brand className={styles.NavLeft} href="/"><b>Salt & Pepper</b></Navbar.Brand>
           <div className={styles.NavRight}>
             <a href="/"><Button variant="light" className="btn-sm">Home</Button></a>
-            <a href="/login"><Button variant="light" className="btn-sm">Log in</Button></a>
           </div>
         </Navbar>
-        <Form className={styles.SignupForm} onSubmit={ this.handleFormSubmit } autoComplete="off">
-          <label>First Name</label>
-          <input type="text" id="firstname" name="firstname" value={ this.state.firstname } onChange={ this.handleFirstnameChange }></input>
 
-          <label>Last Name</label>
-          <input type="text" id="lastname" name="lastname" value={ this.state.lastname } onChange={ this.handleLastnameChange }></input>
+        <div className={styles.FormWrapper}>
+          <Form className={styles.SignupForm} onSubmit={ this.handleFormSubmit } autoComplete="off">
+            <h3>Create an Account</h3>
 
-          <label>Username</label>
-          <input type="text" id="username" name="username" value={ this.state.username } onChange={ this.handleUsernameChange }></input>
+            <div className={styles.FormGroup}>
+              <label><b>First name</b></label>
+              <input type="text" id="firstname" name="firstname" value={ this.state.firstname } onChange={ this.handleFirstnameChange }></input>
+            </div>
 
-          <label>Password</label>
-          <input type="password" id="password" name="password" value={ this.state.password } onChange={ this.handlePasswordChange }></input>
+            <div className={styles.FormGroup}>
+              <label><b>Last name</b></label>
+              <input type="text" id="lastname" name="lastname" value={ this.state.lastname } onChange={ this.handleLastnameChange }></input>
+            </div>
           
-          <label>Email</label>
-          <input type="email" id="email" name="email" value={ this.state.email } onChange={ this.handleEmailChange }></input>
+            <div className={styles.FormGroup}>
+              <label><b>Username</b></label>
+              <input type="text" id="username" name="username" value={ this.state.username } onChange={ this.handleUsernameChange }></input>
+            </div>
 
-          
-          <Button type="submit">Sign up</Button>
-        </Form>
+            <div className={styles.FormGroup}>
+              <label><b>Email</b></label>
+              <input type="email" id="email" name="email" value={ this.state.email } onChange={ this.handleEmailChange }></input>
+            </div>
+
+            <div className={styles.FormGroup}>
+              <label><b>Passowrd</b></label>
+              <input type="password" id="password" name="password" value={ this.state.password } onChange={ this.handlePasswordChange }></input>
+            </div>
+
+            <Button type="submit" className={styles.SignupButton} variant="dark">Sign Up</Button>
+            <p className={styles.LoginLink}>Already registered? <a href="/login">sign in</a></p>
+          </Form>
+        </div>
       </div>
     )
   }

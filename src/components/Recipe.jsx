@@ -3,6 +3,7 @@ import { Container, Button, Form, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeDetail from './RecipeDetail';
 import styles from './Recipe.module.css';
+import { Link } from 'react-router-dom';
 
 export default class Recipe extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class Recipe extends Component {
       recipeName: '',
       recipes: [],
     }
-  }
+  } 
   
   handleChange = (e) => {
     console.log ()
@@ -41,7 +42,7 @@ export default class Recipe extends Component {
       <div className={styles.Background}>
         <Navbar className={styles.NavBarNew} bg="light" expand="lg">
           <Navbar.Brand className={styles.NavLeft} href="#home"><b>Salt & Pepper</b></Navbar.Brand>
-          <Form onSubmit={ this.handleFormSubmit } inline autocomplete="off">
+          <Form className={styles.SearchForm} onSubmit={ this.handleFormSubmit } inline autocomplete="off">
             <input className="mr-sm-1" type="text" id="recipe" value={ this.state.recipeName } onChange={ this.handleChange} placeholder="Search for recipes"></input>
             <Button variant="outline-success" className="btn-floating btn-sm" type="submit">Search</Button>
           </Form>
@@ -56,10 +57,11 @@ export default class Recipe extends Component {
         <Container className={styles.RecipeBox}>
           { this.state.recipes.map((recipe, index) => {
             return (
-              <RecipeDetail recipe={ recipe } index={ index } /> 
+              <RecipeDetail recipe={ recipe } key={ index } /> 
             )
           })}
         </Container>
+        <Link to='/savelist'>Saved Recipe</Link>
       </div>
     )
   }

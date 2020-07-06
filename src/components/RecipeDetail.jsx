@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Card, Button, Modal } from 'react-bootstrap'
 import styles from './RecipeDetail.module.css'
+import { connect } from 'react-redux';
+import { saveRecipe } from './redux/actions/action'
+
 // import Modal from '@bit/react-bootstrap.react-bootstrap.modal'
 
 class RecipeDetail extends Component {
@@ -16,7 +19,6 @@ class RecipeDetail extends Component {
     })
   }
   
-
   render(){
     return (
       <Card className={styles.Card}>
@@ -29,11 +31,24 @@ class RecipeDetail extends Component {
           )}
         </div>
         <br></br>
-        <a href="/Detail"><Button variant="light">Get Recipe</Button></a>
-        {/* <Button>Save!</Button> */}
+        <a href="/RecipePage"><Button variant="light">Get Recipe</Button></a>
+        <Button className={styles.SaveButton} variant="dark" onClick={() => {this.props.saveRecipe(this.props.recipe)}}>Save Recipe</Button>
       </Card>
     )  
   }
 }
 
-export default RecipeDetail
+const mapStateToProps = (state) => {
+  return {
+    recipes: state.recipes,
+  }
+}
+
+const mapDispatchToProps = {
+  saveRecipe,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(RecipeDetail)

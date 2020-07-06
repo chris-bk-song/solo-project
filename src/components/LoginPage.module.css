@@ -1,4 +1,17 @@
 .LoginForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.FormGroup {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.LoginButton {
+  width: 230px;
 }
