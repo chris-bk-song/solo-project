@@ -24,8 +24,7 @@ export default class Recipe extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     let recipe = this.state.recipeName
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=67c41709350d4b19bd7705edd26e778a&query=${recipe}`)
-    // fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=644cf81819bd45b8a428df385604dc1c&includeNutrition=true`)
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=9a56e86fa19142d4b20afc0d6b7b335c&query=${recipe}`)
     .then(res => res.json())
     .then(data => {
       if (data.results) {

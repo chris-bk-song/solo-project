@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Card, Button, Modal } from 'react-bootstrap'
+import { Card, Button, Accordion } from 'react-bootstrap'
 import styles from './RecipeDetail.module.css'
 import { connect } from 'react-redux';
 import { saveRecipe } from './redux/actions/action'
@@ -10,7 +10,7 @@ import { saveRecipe } from './redux/actions/action'
 class RecipeDetailLoggedin extends Component {
   state = {data: null}
   componentDidMount(){
-    fetch(`https://api.spoonacular.com/recipes/${this.props.recipe.id}/information?apiKey=67c41709350d4b19bd7705edd26e778a&includeNutrition=true`)
+    fetch(`https://api.spoonacular.com/recipes/${this.props.recipe.id}/information?apiKey=9a56e86fa19142d4b20afc0d6b7b335c&includeNutrition=true`)
     .then(res => res.json())
     .then(data => {
       this.setState({
@@ -21,18 +21,33 @@ class RecipeDetailLoggedin extends Component {
   
   render(){
     return (
-      <Card className={styles.Card}>
-        <img src={this.props.recipe.image} alt=""/>
-        <div>
+      <Accordion>
+        <Card className={styles.Card}>
+          <img src={this.props.recipe.image} alt=""/>
           <h5><b>{this.props.recipe.title}</b></h5>
-          { this.state.data && (
-            <span class="text" className="overflow-hidden" style={{ maxWidth: "100px" }} dangerouslySetInnerHTML={ {__html:this.state.data.summary} }></span> 
-          )}
-        </div>
-        <br></br>
-        <a href="/RecipePage"><Button variant="light">View Recipe</Button></a>
-        <Button className={styles.SaveButton} variant="dark" onClick={() => {this.props.saveRecipe(this.props.recipe)}}>Save Recipe</Button>
-      </Card>
+          <br></br>
+          
+          <Accordion.Toggle as={Button} variant="light" eventKey="0">View Summary</Accordion.Toggle>
+          <Accordion.Collapse eventKey="0">
+            <div>
+            { this.state.data && (
+              <span class="text" dangerouslySetInnerHTML={ {__html:this.state.data.summary} }></span> 
+            )}
+            </div>
+          </Accordion.Collapse>
+          
+          <Accordion.Toggle as={Button} variant="secondary" eventKey="1">View Recipe</Accordion.Toggle>
+          <Accordion.Collapse eventKey="1">
+            <div>
+              { this.state.data && (
+                <span class="text" dangerouslySetInnerHTML={ {__html:this.state.data.instructions} }></span> 
+              )}
+            </div>
+          </Accordion.Collapse>
+
+          <Button className={styles.SaveButton} variant="dark" onClick={() => {this.props.saveRecipe(this.props.recipe)}}>Save Recipe</Button>
+        </Card>
+      </Accordion>
     )  
   }
 }
