@@ -1,7 +1,11 @@
 <p align="center">
-<img src="public/images/SaltandPepper.png" />
+<a href="https://dreamy-elion-c0bde3.netlify.app/"><img src="public/images/SaltandPepper.png" /></a>
 
 <p align = "center"><b>Create your favorite Recipes Book</b></p>
+<p>Salt & Pepper is your go to website to access all the recipes in the World. Create an account to enjoy unlimited access and save your favorite recipes in your own list.</p>
+
+## CONTRIBUTOR
+<p>Chris Song</p>
 
 ## SITE PREVIEW
 <p align="center">
