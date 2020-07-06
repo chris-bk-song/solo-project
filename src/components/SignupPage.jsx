@@ -28,11 +28,13 @@ export default class SignupPage extends Component {
         email: this.state.email,
       })
     })
-    
+    this.props.history.push('/login')
+
     console.log(this.state.firstname)
     console.log(this.state.lastname)
     console.log(this.state.username)
     console.log(this.state.password)
+
   }
 
   handleFirstnameChange = (e) => {

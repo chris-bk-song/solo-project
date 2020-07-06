@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Button, Form, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import RecipeDetail from './RecipeDetail';
-import styles from './Recipe.module.css';
+import RecipeDetailLoggedin from './RecipeDetailLoggedin';
+import styles from './LoggedinPage.module.css';
+import { Link } from 'react-router-dom';
 
 export default class Recipe extends Component {
   constructor(props) {
@@ -40,14 +41,14 @@ export default class Recipe extends Component {
     return (
       <div className={styles.Background}>
         <Navbar className={styles.NavBarNew} bg="light" expand="lg">
-          <Navbar.Brand className={styles.NavLeft} href="#home"><b>Salt & Pepper</b></Navbar.Brand>
-          <Form className={styles.SearchForm} onSubmit={ this.handleFormSubmit } inline autoComplete="off">
+          <Navbar.Brand className={styles.NavLeft} href="/loggedin"><b>Salt & Pepper</b></Navbar.Brand>
+          <Form className={styles.SearchForm} onSubmit={ this.handleFormSubmit } inline autocomplete="off">
             <input className="mr-sm-1" type="text" id="recipe" value={ this.state.recipeName } onChange={ this.handleChange} placeholder="Search for recipes"></input>
             <Button variant="outline-success" className="btn-floating btn-sm" type="submit">Search</Button>
           </Form>
           <div className={styles.NavRight}>
-            <a href="/login"><Button variant="light" className="btn-sm">Log in</Button></a>
-            <a href="/signup"><Button variant="light" className="btn-sm">Sign up</Button></a>
+          <Button variant="light"><Link to='/savelist' className={styles.LinkButton} class="btn-sm">Saved Recipes</Link></Button>
+          <a href="/"><Button variant="light" className="btn-sm" color="black">Log out</Button></a>
           </div>
         </Navbar>
 
@@ -56,7 +57,7 @@ export default class Recipe extends Component {
         <Container className={styles.RecipeBox}>
           { this.state.recipes.map((recipe, index) => {
             return (
-              <RecipeDetail recipe={ recipe } key={ index } /> 
+              <RecipeDetailLoggedin recipe={ recipe } key={ index } /> 
             )
           })}
         </Container>

@@ -6,6 +6,7 @@ import Recipe from './components/Recipe';
 import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
 import SavePage from './components/SavePage';
+import LoggedinPage from './components/LoggedinPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" exact component={LoginPage} />
           <Route path="/signup" exact component={SignupPage} />
           <Route path="/savelist" exact component={SavePage} />
+          <Route path="/loggedin" exact component={LoggedinPage} />
         </Switch>
       </div>
     </BrowserRouter>
